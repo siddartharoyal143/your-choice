@@ -1,10 +1,12 @@
 import { Button } from '@/components/ui/button';
 import { Smartphone, Monitor, Shirt, Star } from 'lucide-react';
-import { useState } from 'react';
 
-const CategoryFilter = () => {
-  const [activeCategory, setActiveCategory] = useState('All');
+interface CategoryFilterProps {
+  activeCategory: string;
+  onCategoryChange: (category: string) => void;
+}
 
+const CategoryFilter = ({ activeCategory, onCategoryChange }: CategoryFilterProps) => {
   const categories = [
     { name: 'All', icon: Star, color: 'neon-cyan' },
     { name: 'Mobiles', icon: Smartphone, color: 'neon-magenta' },
@@ -28,7 +30,7 @@ const CategoryFilter = () => {
                 className={`flex items-center gap-2 px-6 py-3 ${
                   isActive ? 'text-black' : 'text-foreground'
                 }`}
-                onClick={() => setActiveCategory(category.name)}
+                onClick={() => onCategoryChange(category.name)}
               >
                 <IconComponent className="w-5 h-5" />
                 <span className="font-semibold">{category.name}</span>

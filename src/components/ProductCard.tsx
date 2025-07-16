@@ -3,6 +3,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Star, Heart, ShoppingCart } from 'lucide-react';
 import { useState } from 'react';
+import { useCart } from '@/hooks/useCart';
+import { useAuth } from '@/hooks/useAuth';
 
 interface ProductCardProps {
   id: string;
@@ -27,8 +29,40 @@ const ProductCard = ({
 }: ProductCardProps) => {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const { addItem } = useCart();
+  const { user, toggleLogin } = useAuth();
 
   const discount = originalPrice ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
+
+  const handleAddToCart = () => {
+    if (!user) {
+      toggleLogin();
+      return;
+    }
+    
+    addItem({
+      id,
+      title,
+      price,
+      image,
+      category
+    });
+  };
+
+  const handleQuickAdd = () => {
+    if (!user) {
+      toggleLogin();
+      return;
+    }
+    
+    addItem({
+      id,
+      title,
+      price,
+      image,
+      category
+    });
+  };
 
   return (
     <Card 
@@ -78,6 +112,7 @@ const ProductCard = ({
             <Button 
               size="sm" 
               variant="neon"
+              onClick={handleQuickAdd}
             >
               <ShoppingCart className="w-4 h-4 mr-2" />
               Quick Add
@@ -131,6 +166,7 @@ const ProductCard = ({
           variant="cyber"
           size="sm"
           className="w-full"
+          onClick={handleAddToCart}
         >
           <ShoppingCart className="w-4 h-4 mr-2" />
           Add to Cart

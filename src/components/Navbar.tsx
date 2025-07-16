@@ -1,10 +1,14 @@
-import { Search, ShoppingCart, User, Menu } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useState } from 'react';
+import { useCart } from '@/hooks/useCart';
+import { useAuth } from '@/hooks/useAuth';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { getTotalItems, toggleCart } = useCart();
+  const { user, toggleLogin, logout } = useAuth();
 
   return (
     <nav className="glass sticky top-0 z-50 w-full backdrop-blur-xl border-b border-white/10">
@@ -45,16 +49,47 @@ const Navbar = () => {
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
-            <Button variant="glass" size="sm" className="hidden md:flex items-center space-x-2">
-              <User className="w-4 h-4" />
-              <span>Login</span>
-            </Button>
+            {user ? (
+              <div className="hidden md:flex items-center space-x-2">
+                <img 
+                  src={user.avatar} 
+                  alt={user.name}
+                  className="w-8 h-8 rounded-full border-2 border-neon-cyan"
+                />
+                <span className="text-sm font-medium">{user.name}</span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={logout}
+                  className="text-destructive hover:text-destructive/80"
+                >
+                  <LogOut className="w-4 h-4" />
+                </Button>
+              </div>
+            ) : (
+              <Button 
+                variant="glass" 
+                size="sm" 
+                className="hidden md:flex items-center space-x-2"
+                onClick={toggleLogin}
+              >
+                <User className="w-4 h-4" />
+                <span>Login</span>
+              </Button>
+            )}
             
-            <Button variant="glass" size="sm" className="relative">
+            <Button 
+              variant="glass" 
+              size="sm" 
+              className="relative"
+              onClick={toggleCart}
+            >
               <ShoppingCart className="w-4 h-4" />
-              <span className="absolute -top-2 -right-2 bg-gradient-purple-blaze text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                3
-              </span>
+              {getTotalItems() > 0 && (
+                <span className="absolute -top-2 -right-2 bg-gradient-purple-blaze text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse-glow">
+                  {getTotalItems()}
+                </span>
+              )}
             </Button>
 
             {/* Mobile Menu Button */}
@@ -93,10 +128,35 @@ const Navbar = () => {
               </a>
             </div>
             
-            <Button variant="glass" className="w-full">
-              <User className="w-4 h-4 mr-2" />
-              Login
-            </Button>
+            {user ? (
+              <div className="flex items-center justify-between w-full">
+                <div className="flex items-center space-x-2">
+                  <img 
+                    src={user.avatar} 
+                    alt={user.name}
+                    className="w-8 h-8 rounded-full border-2 border-neon-cyan"
+                  />
+                  <span className="text-sm font-medium">{user.name}</span>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={logout}
+                  className="text-destructive hover:text-destructive/80"
+                >
+                  <LogOut className="w-4 h-4" />
+                </Button>
+              </div>
+            ) : (
+              <Button 
+                variant="glass" 
+                className="w-full"
+                onClick={toggleLogin}
+              >
+                <User className="w-4 h-4 mr-2" />
+                Login
+              </Button>
+            )}
           </div>
         )}
       </div>
