@@ -61,7 +61,29 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Neon Colors
+				neon: {
+					cyan: 'hsl(var(--neon-cyan))',
+					magenta: 'hsl(var(--neon-magenta))',
+					green: 'hsl(var(--neon-green))'
 				}
+			},
+			backgroundImage: {
+				'gradient-blue-ocean': 'var(--gradient-blue-ocean)',
+				'gradient-purple-blaze': 'var(--gradient-purple-blaze)',
+				'gradient-neon-glow': 'var(--gradient-neon-glow)',
+				'gradient-glass': 'var(--gradient-glass)'
+			},
+			fontFamily: {
+				'orbitron': ['Orbitron', 'monospace'],
+				'poppins': ['Poppins', 'sans-serif']
+			},
+			boxShadow: {
+				'glow-cyan': 'var(--glow-cyan)',
+				'glow-magenta': 'var(--glow-magenta)',
+				'glow-green': 'var(--glow-green)',
+				'glass': 'var(--glass-shadow)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -70,25 +92,33 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-20px)' }
+				},
+				'pulse-glow': {
+					'0%': { boxShadow: '0 0 5px hsl(180, 100%, 50%)' },
+					'100%': { boxShadow: '0 0 20px hsl(180, 100%, 50%), 0 0 30px hsl(180, 100%, 50%)' }
+				},
+				'gradient': {
+					'0%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' },
+					'100%': { backgroundPosition: '0% 50%' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 6s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite alternate',
+				'gradient': 'gradient 3s ease infinite'
 			}
 		}
 	},
