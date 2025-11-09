@@ -11,25 +11,26 @@ const Navbar = () => {
   const { user, toggleLogin, logout } = useAuth();
 
   return (
-    <nav className="bg-primary sticky top-0 z-50 w-full shadow-md">
-      <div className="container mx-auto px-4 py-3">
+    <nav className="glass sticky top-0 z-50 w-full backdrop-blur-xl border-b border-white/10">
+      <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <h1 className="text-2xl font-bold text-primary-foreground italic">
+            <div className="w-8 h-8 bg-gradient-neon-glow rounded-lg animate-pulse-glow"></div>
+            <h1 className="text-2xl font-orbitron font-bold bg-gradient-neon-glow bg-clip-text text-transparent">
               YOURS CHOICE
             </h1>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">
+            <a href="#" className="text-foreground hover:text-neon-cyan transition-colors">
               Mobiles
             </a>
-            <a href="#" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">
+            <a href="#" className="text-foreground hover:text-neon-cyan transition-colors">
               Electronics
             </a>
-            <a href="#" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">
+            <a href="#" className="text-foreground hover:text-neon-cyan transition-colors">
               Clothing
             </a>
           </div>
@@ -41,7 +42,7 @@ const Navbar = () => {
               <Input
                 type="text"
                 placeholder="Search for products..."
-                className="pl-10 bg-white border-none shadow-sm focus-visible:ring-1 focus-visible:ring-white"
+                className="pl-10 glass border-white/20 focus:border-neon-cyan focus:glow-cyan"
               />
             </div>
           </div>
@@ -53,21 +54,21 @@ const Navbar = () => {
                 <img 
                   src={user.avatar} 
                   alt={user.name}
-                  className="w-8 h-8 rounded-full border-2 border-white"
+                  className="w-8 h-8 rounded-full border-2 border-neon-cyan"
                 />
-                <span className="text-sm font-medium text-primary-foreground">{user.name}</span>
+                <span className="text-sm font-medium">{user.name}</span>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={logout}
-                  className="text-primary-foreground hover:text-primary-foreground/80 hover:bg-primary/80"
+                  className="text-destructive hover:text-destructive/80"
                 >
                   <LogOut className="w-4 h-4" />
                 </Button>
               </div>
             ) : (
               <Button 
-                variant="secondary" 
+                variant="glass" 
                 size="sm" 
                 className="hidden md:flex items-center space-x-2"
                 onClick={toggleLogin}
@@ -78,14 +79,14 @@ const Navbar = () => {
             )}
             
             <Button 
-              variant="secondary" 
+              variant="glass" 
               size="sm" 
               className="relative"
               onClick={toggleCart}
             >
               <ShoppingCart className="w-4 h-4" />
               {getTotalItems() > 0 && (
-                <span className="absolute -top-2 -right-2 bg-secondary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-semibold">
+                <span className="absolute -top-2 -right-2 bg-gradient-purple-blaze text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse-glow">
                   {getTotalItems()}
                 </span>
               )}
@@ -93,7 +94,7 @@ const Navbar = () => {
 
             {/* Mobile Menu Button */}
             <Button
-              variant="secondary"
+              variant="glass"
               size="sm"
               className="md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -105,24 +106,24 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 space-y-4 bg-white rounded-lg p-4 shadow-lg animate-fade-in">
+          <div className="md:hidden mt-4 space-y-4 glass rounded-lg p-4 animate-fade-in">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
                 type="text"
                 placeholder="Search for products..."
-                className="pl-10 bg-background"
+                className="pl-10 glass border-white/20"
               />
             </div>
             
             <div className="flex flex-col space-y-2">
-              <a href="#" className="text-foreground hover:text-primary transition-colors py-2 font-medium">
+              <a href="#" className="text-foreground hover:text-neon-cyan transition-colors py-2">
                 Mobiles
               </a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors py-2 font-medium">
+              <a href="#" className="text-foreground hover:text-neon-cyan transition-colors py-2">
                 Electronics
               </a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors py-2 font-medium">
+              <a href="#" className="text-foreground hover:text-neon-cyan transition-colors py-2">
                 Clothing
               </a>
             </div>
@@ -133,7 +134,7 @@ const Navbar = () => {
                   <img 
                     src={user.avatar} 
                     alt={user.name}
-                    className="w-8 h-8 rounded-full border-2 border-primary"
+                    className="w-8 h-8 rounded-full border-2 border-neon-cyan"
                   />
                   <span className="text-sm font-medium">{user.name}</span>
                 </div>
@@ -148,7 +149,7 @@ const Navbar = () => {
               </div>
             ) : (
               <Button 
-                variant="default" 
+                variant="glass" 
                 className="w-full"
                 onClick={toggleLogin}
               >

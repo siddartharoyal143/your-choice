@@ -28,6 +28,7 @@ const ProductCard = ({
   category 
 }: ProductCardProps) => {
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const { addItem } = useCart();
   const { user, toggleLogin } = useAuth();
 
@@ -48,29 +49,46 @@ const ProductCard = ({
     });
   };
 
+  const handleQuickAdd = () => {
+    if (!user) {
+      toggleLogin();
+      return;
+    }
+    
+    addItem({
+      id,
+      title,
+      price,
+      image,
+      category
+    });
+  };
+
   return (
     <Card 
-      className="group cursor-pointer transition-all duration-200 hover:shadow-lg overflow-hidden bg-card border"
+      className="glass group cursor-pointer transition-all duration-300 hover:shadow-glow-cyan hover:scale-105 overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative">
         {/* Product Image */}
-        <div className="aspect-square overflow-hidden bg-muted">
+        <div className="aspect-square overflow-hidden">
           <img 
             src={image} 
             alt={title}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
           />
         </div>
 
-        {/* Badges */}
-        <div className="absolute top-2 left-2 space-y-1">
+        {/* Floating Badges */}
+        <div className="absolute top-3 left-3 space-y-2">
           {offer && (
-            <Badge variant="secondary" className="font-semibold shadow-sm">
+            <Badge className="bg-gradient-purple-blaze text-white font-semibold animate-pulse-glow">
               {offer}
             </Badge>
           )}
           {discount > 0 && (
-            <Badge variant="success" className="font-semibold shadow-sm">
+            <Badge className="bg-gradient-blue-ocean text-white font-semibold">
               {discount}% OFF
             </Badge>
           )}
@@ -79,61 +97,75 @@ const ProductCard = ({
         {/* Wishlist Button */}
         <Button
           size="sm"
-          variant="ghost"
-          className={`absolute top-2 right-2 bg-white hover:bg-white shadow-sm ${
-            isWishlisted ? 'text-destructive' : 'text-muted-foreground'
+          variant="glass"
+          className={`absolute top-3 right-3 ${
+            isWishlisted ? 'text-neon-magenta' : 'text-muted-foreground'
           }`}
-          onClick={(e) => {
-            e.stopPropagation();
-            setIsWishlisted(!isWishlisted);
-          }}
+          onClick={() => setIsWishlisted(!isWishlisted)}
         >
           <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-current' : ''}`} />
         </Button>
+
+        {/* Hover Overlay */}
+        {isHovered && (
+          <div className="absolute inset-0 bg-black/50 flex items-center justify-center animate-fade-in">
+            <Button 
+              size="sm" 
+              variant="neon"
+              onClick={handleQuickAdd}
+            >
+              <ShoppingCart className="w-4 h-4 mr-2" />
+              Quick Add
+            </Button>
+          </div>
+        )}
       </div>
 
-      <CardContent className="p-3 space-y-2">
+      <CardContent className="p-4 space-y-3">
         {/* Category */}
-        <div className="text-xs text-muted-foreground uppercase font-medium">
+        <div className="text-xs text-neon-cyan font-semibold uppercase tracking-wide">
           {category}
         </div>
 
         {/* Title */}
-        <h3 className="font-medium text-foreground line-clamp-2 text-sm group-hover:text-primary transition-colors">
+        <h3 className="font-semibold text-foreground line-clamp-2 group-hover:text-neon-cyan transition-colors">
           {title}
         </h3>
 
         {/* Rating */}
         <div className="flex items-center gap-1">
-          <div className="flex items-center gap-0.5 bg-success text-white px-1.5 py-0.5 rounded text-xs font-semibold">
-            {rating}
-            <Star className="w-3 h-3 fill-current ml-0.5" />
+          <div className="flex">
+            {[...Array(5)].map((_, i) => (
+              <Star
+                key={i}
+                className={`w-4 h-4 ${
+                  i < Math.floor(rating)
+                    ? 'text-neon-green fill-current'
+                    : 'text-muted-foreground'
+                }`}
+              />
+            ))}
           </div>
-          <span className="text-xs text-muted-foreground">(234)</span>
+          <span className="text-sm text-muted-foreground">({rating})</span>
         </div>
 
         {/* Price */}
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-xl font-bold text-foreground">
+        <div className="flex items-center gap-2">
+          <span className="text-2xl font-bold text-neon-cyan font-orbitron">
             ₹{price.toLocaleString()}
           </span>
           {originalPrice && (
-            <>
-              <span className="text-sm text-muted-foreground line-through">
-                ₹{originalPrice.toLocaleString()}
-              </span>
-              <span className="text-sm text-success font-semibold">
-                {discount}% off
-              </span>
-            </>
+            <span className="text-sm text-muted-foreground line-through">
+              ₹{originalPrice.toLocaleString()}
+            </span>
           )}
         </div>
 
         {/* Add to Cart Button */}
         <Button 
-          variant="default"
+          variant="cyber"
           size="sm"
-          className="w-full font-semibold"
+          className="w-full"
           onClick={handleAddToCart}
         >
           <ShoppingCart className="w-4 h-4 mr-2" />

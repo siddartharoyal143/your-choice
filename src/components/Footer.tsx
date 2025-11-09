@@ -2,25 +2,28 @@ import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from 'lucide-react'
 
 const Footer = () => {
   return (
-    <footer className="bg-card border-t mt-20">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="glass border-t border-white/10 mt-20">
+      <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-primary italic">
-              YOURS CHOICE
-            </h2>
-            <p className="text-muted-foreground text-sm">
-              Your trusted partner for premium products at the best prices. Shop with confidence!
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-gradient-neon-glow rounded-lg animate-pulse-glow"></div>
+              <h2 className="text-xl font-orbitron font-bold bg-gradient-neon-glow bg-clip-text text-transparent">
+                YOURS CHOICE
+              </h2>
+            </div>
+            <p className="text-muted-foreground">
+              Experience the future of shopping with our cutting-edge collection of premium products.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#" className="text-neon-cyan hover:text-neon-magenta transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#" className="text-neon-cyan hover:text-neon-magenta transition-colors">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#" className="text-neon-cyan hover:text-neon-magenta transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
@@ -28,18 +31,18 @@ const Footer = () => {
 
           {/* Categories */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Shop By Category</h3>
+            <h3 className="text-lg font-orbitron font-semibold text-neon-cyan">Categories</h3>
             <div className="space-y-2">
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors text-sm">
-                Mobiles & Tablets
+              <a href="#" className="block text-muted-foreground hover:text-neon-cyan transition-colors">
+                Mobiles
               </a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors text-sm">
+              <a href="#" className="block text-muted-foreground hover:text-neon-cyan transition-colors">
                 Electronics
               </a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors text-sm">
-                Fashion & Clothing
+              <a href="#" className="block text-muted-foreground hover:text-neon-cyan transition-colors">
+                Clothing
               </a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors text-sm">
+              <a href="#" className="block text-muted-foreground hover:text-neon-cyan transition-colors">
                 Accessories
               </a>
             </div>
@@ -47,18 +50,18 @@ const Footer = () => {
 
           {/* Support */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Customer Support</h3>
+            <h3 className="text-lg font-orbitron font-semibold text-neon-magenta">Support</h3>
             <div className="space-y-2">
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors text-sm">
+              <a href="#" className="block text-muted-foreground hover:text-neon-magenta transition-colors">
                 Help Center
               </a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors text-sm">
-                Returns & Refunds
+              <a href="#" className="block text-muted-foreground hover:text-neon-magenta transition-colors">
+                Returns
               </a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors text-sm">
-                Shipping Information
+              <a href="#" className="block text-muted-foreground hover:text-neon-magenta transition-colors">
+                Shipping Info
               </a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors text-sm">
+              <a href="#" className="block text-muted-foreground hover:text-neon-magenta transition-colors">
                 Privacy Policy
               </a>
             </div>
@@ -66,28 +69,28 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Contact Us</h3>
+            <h3 className="text-lg font-orbitron font-semibold text-neon-green">Contact</h3>
             <div className="space-y-3">
-              <div className="flex items-start space-x-3 text-muted-foreground text-sm">
-                <Mail className="w-4 h-4 text-primary mt-0.5" />
+              <div className="flex items-center space-x-3 text-muted-foreground">
+                <Mail className="w-4 h-4 text-neon-green" />
                 <span>support@yourschoice.com</span>
               </div>
-              <div className="flex items-start space-x-3 text-muted-foreground text-sm">
-                <Phone className="w-4 h-4 text-primary mt-0.5" />
+              <div className="flex items-center space-x-3 text-muted-foreground">
+                <Phone className="w-4 h-4 text-neon-green" />
                 <span>+1 (555) 123-4567</span>
               </div>
-              <div className="flex items-start space-x-3 text-muted-foreground text-sm">
-                <MapPin className="w-4 h-4 text-primary mt-0.5" />
-                <span>123 Shopping Street, City Center, 12345</span>
+              <div className="flex items-center space-x-3 text-muted-foreground">
+                <MapPin className="w-4 h-4 text-neon-green" />
+                <span>123 Future St, Cyber City</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t mt-10 pt-6 text-center">
-          <p className="text-muted-foreground text-sm">
-            © 2024 <span className="text-primary font-semibold">YOURS CHOICE</span>. All rights reserved.
+        <div className="border-t border-white/10 mt-12 pt-8 text-center">
+          <p className="text-muted-foreground">
+            © 2024 <span className="text-neon-cyan font-orbitron">YOURS CHOICE</span>. All rights reserved.
           </p>
         </div>
       </div>
