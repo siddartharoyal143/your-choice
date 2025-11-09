@@ -2,79 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Futuristic E-Commerce Design System - YOURS CHOICE */
+/* Classic E-Commerce Design System - YOURS CHOICE */
 
 @layer base {
   :root {
-    /* Core Futuristic Colors */
-    --background: 220 30% 8%;
-    --foreground: 210 40% 98%;
+    /* Flipkart-inspired Classic Colors */
+    --background: 0 0% 97%;
+    --foreground: 0 0% 13%;
     
-    /* Glass Panels */
-    --card: 220 30% 8%;
-    --card-foreground: 210 40% 98%;
+    /* Card/Panel */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 13%;
     
     /* Popover/Dropdown */
-    --popover: 220 30% 12%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 13%;
     
-    /* Blue Ocean Gradient (#1A2980 → #26D0CE) */
-    --primary: 235 65% 35%;
-    --primary-foreground: 210 40% 98%;
+    /* Flipkart Blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
     
-    /* Purple Blaze Gradient (#8E2DE2 → #4A00E0) */
-    --secondary: 265 85% 55%;
-    --secondary-foreground: 210 40% 98%;
+    /* Orange Accent */
+    --secondary: 28 100% 53%;
+    --secondary-foreground: 0 0% 100%;
     
-    /* Muted Glass */
-    --muted: 220 30% 15%;
-    --muted-foreground: 215 20% 65%;
+    /* Muted */
+    --muted: 210 10% 93%;
+    --muted-foreground: 0 0% 40%;
     
-    /* Accent Neon */
-    --accent: 180 100% 50%;
-    --accent-foreground: 220 30% 8%;
+    /* Accent */
+    --accent: 217 91% 95%;
+    --accent-foreground: 217 91% 60%;
     
     /* Destructive */
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
     
     /* Borders & Inputs */
-    --border: 220 30% 20%;
-    --input: 220 30% 15%;
-    --ring: 180 100% 50%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 217 91% 60%;
     
-    /* Gradients */
-    --gradient-blue-ocean: linear-gradient(135deg, hsl(235, 65%, 35%) 0%, hsl(185, 85%, 65%) 100%);
-    --gradient-purple-blaze: linear-gradient(135deg, hsl(265, 85%, 55%) 0%, hsl(256, 100%, 44%) 100%);
-    --gradient-neon-glow: linear-gradient(135deg, hsl(180, 100%, 50%) 0%, hsl(300, 100%, 50%) 50%, hsl(120, 100%, 50%) 100%);
-    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    /* Success */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
     
-    /* Neon Colors */
-    --neon-cyan: 180 100% 50%;
-    --neon-magenta: 300 100% 50%;
-    --neon-green: 120 100% 50%;
+    /* Warning */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
     
-    /* Shadows & Glows */
-    --glow-cyan: 0 0 20px hsl(180, 100%, 50%);
-    --glow-magenta: 0 0 20px hsl(300, 100%, 50%);
-    --glow-green: 0 0 20px hsl(120, 100%, 50%);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-glow: box-shadow 0.3s ease;
-    
-    --radius: 1rem;
+    --radius: 0.25rem;
     
     /* Sidebar */
-    --sidebar-background: 220 30% 8%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 235 65% 35%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 220 30% 15%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 220 30% 20%;
-    --sidebar-ring: 180 100% 50%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 13%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 10% 93%;
+    --sidebar-accent-foreground: 0 0% 13%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 217 91% 60%;
   }
 }
 
@@ -84,74 +71,8 @@
   }
   
   body {
-    @apply bg-background text-foreground font-poppins;
-    background: radial-gradient(circle at 20% 50%, hsl(235, 65%, 35%) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, hsl(265, 85%, 55%) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, hsl(180, 100%, 50%) 0%, transparent 50%),
-                hsl(220, 30%, 8%);
-    background-attachment: fixed;
-    background-size: 100% 100%;
+    @apply bg-background text-foreground font-sans;
     min-height: 100vh;
-  }
-  
-  /* Glassmorphism Base */
-  .glass {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: var(--glass-shadow);
-  }
-  
-  /* Neon Glow Effects */
-  .glow-cyan {
-    box-shadow: var(--glow-cyan);
-  }
-  
-  .glow-magenta {
-    box-shadow: var(--glow-magenta);
-  }
-  
-  .glow-green {
-    box-shadow: var(--glow-green);
-  }
-  
-  /* Typography */
-  .font-orbitron {
-    font-family: 'Orbitron', monospace;
-  }
-  
-  .font-poppins {
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  /* Animations */
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  .animate-pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite alternate;
-  }
-  
-  .animate-gradient {
-    animation: gradient 3s ease infinite;
-    background-size: 200% 200%;
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-  }
-  
-  @keyframes pulse-glow {
-    0% { box-shadow: 0 0 5px hsl(180, 100%, 50%); }
-    100% { box-shadow: 0 0 20px hsl(180, 100%, 50%), 0 0 30px hsl(180, 100%, 50%); }
-  }
-  
-  @keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
   }
   
   /* Scrollbar */
@@ -160,15 +81,15 @@
   }
   
   ::-webkit-scrollbar-track {
-    background: hsl(220, 30%, 12%);
+    background: hsl(0, 0%, 95%);
   }
   
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, hsl(180, 100%, 50%), hsl(300, 100%, 50%));
+    background: hsl(217, 91%, 60%);
     border-radius: 4px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, hsl(180, 100%, 60%), hsl(300, 100%, 60%));
+    background: hsl(217, 91%, 50%);
   }
 }

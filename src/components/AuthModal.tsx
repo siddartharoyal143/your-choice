@@ -57,33 +57,32 @@ const AuthModal = () => {
     <>
       {/* Overlay */}
       <div 
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 animate-fade-in"
+        className="fixed inset-0 bg-black/40 z-40"
         onClick={closeModals}
       />
 
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div className={`w-full max-w-md transform transition-all duration-500 ${
+        <div className={`w-full max-w-md transform transition-all duration-300 ${
           isLoginOpen || isSignupOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
         }`}>
-          <div className="glass rounded-2xl border border-white/20 overflow-hidden">
+          <div className="bg-white rounded-lg shadow-2xl overflow-hidden">
             {/* Header */}
-            <div className="relative bg-gradient-blue-ocean p-6 text-center">
+            <div className="relative bg-primary p-6 text-center">
               <Button 
                 variant="ghost" 
                 size="sm" 
                 onClick={closeModals}
-                className="absolute top-4 right-4 text-white hover:bg-white/20"
+                className="absolute top-3 right-3 text-white hover:bg-white/10"
               >
                 <X className="w-5 h-5" />
               </Button>
               
-              <div className="w-16 h-16 bg-gradient-neon-glow rounded-full mx-auto mb-4 animate-pulse-glow"></div>
-              <h2 className="text-2xl font-orbitron font-bold text-white">
-                {isLoginOpen ? 'Welcome Back' : 'Join the Future'}
+              <h2 className="text-2xl font-bold text-white">
+                {isLoginOpen ? 'Welcome Back!' : 'Create Account'}
               </h2>
-              <p className="text-white/80 mt-2">
-                {isLoginOpen ? 'Sign in to your account' : 'Create your account'}
+              <p className="text-white/90 mt-1 text-sm">
+                {isLoginOpen ? 'Sign in to continue shopping' : 'Join us today'}
               </p>
             </div>
 
@@ -92,7 +91,7 @@ const AuthModal = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
                 {isSignupOpen && (
                   <div className="space-y-2">
-                    <Label htmlFor="name" className="text-foreground">Full Name</Label>
+                    <Label htmlFor="name">Full Name</Label>
                     <div className="relative">
                       <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                       <Input
@@ -101,7 +100,7 @@ const AuthModal = () => {
                         placeholder="Enter your full name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="pl-10 glass border-white/20 focus:border-neon-cyan"
+                        className="pl-10"
                         required
                       />
                     </div>
@@ -109,7 +108,7 @@ const AuthModal = () => {
                 )}
 
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-foreground">Email</Label>
+                  <Label htmlFor="email">Email</Label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                     <Input
@@ -118,14 +117,14 @@ const AuthModal = () => {
                       placeholder="Enter your email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="pl-10 glass border-white/20 focus:border-neon-cyan"
+                      className="pl-10"
                       required
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="password" className="text-foreground">Password</Label>
+                  <Label htmlFor="password">Password</Label>
                   <div className="relative">
                     <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                     <Input
@@ -134,14 +133,14 @@ const AuthModal = () => {
                       placeholder="Enter your password"
                       value={formData.password}
                       onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                      className="pl-10 pr-10 glass border-white/20 focus:border-neon-cyan"
+                      className="pl-10 pr-10"
                       required
                     />
                     <Button
                       type="button"
                       variant="ghost"
                       size="sm"
-                      className="absolute right-1 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                      className="absolute right-1 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground h-8 w-8 p-0"
                       onClick={() => setShowPassword(!showPassword)}
                     >
                       {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -151,7 +150,7 @@ const AuthModal = () => {
 
                 {isSignupOpen && (
                   <div className="space-y-2">
-                    <Label htmlFor="confirmPassword" className="text-foreground">Confirm Password</Label>
+                    <Label htmlFor="confirmPassword">Confirm Password</Label>
                     <div className="relative">
                       <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                       <Input
@@ -160,7 +159,7 @@ const AuthModal = () => {
                         placeholder="Confirm your password"
                         value={formData.confirmPassword}
                         onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                        className="pl-10 glass border-white/20 focus:border-neon-cyan"
+                        className="pl-10"
                         required
                       />
                     </div>
@@ -169,8 +168,8 @@ const AuthModal = () => {
 
                 <Button 
                   type="submit" 
-                  variant="cyber" 
-                  className="w-full" 
+                  variant="default" 
+                  className="w-full font-semibold" 
                   size="lg"
                   disabled={isLoading}
                 >
@@ -187,13 +186,13 @@ const AuthModal = () => {
 
               {/* Switch Mode */}
               <div className="mt-6 text-center">
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   {isLoginOpen ? "Don't have an account?" : "Already have an account?"}
                 </p>
                 <Button 
-                  variant="ghost" 
+                  variant="link" 
                   onClick={switchMode}
-                  className="text-neon-cyan hover:text-neon-magenta transition-colors mt-2"
+                  className="text-primary hover:text-primary/80 font-semibold mt-1"
                 >
                   {isLoginOpen ? 'Create Account' : 'Sign In'}
                 </Button>

@@ -29,21 +29,19 @@ const ProductGrid = ({ category = 'All' }: ProductGridProps) => {
   };
 
   return (
-    <section className="py-16">
+    <section className="py-12">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-4">
-            <span className="bg-gradient-neon-glow bg-clip-text text-transparent">
-              {category === 'All' ? 'All Products' : category}
-            </span>
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold text-foreground mb-2">
+            {category === 'All' ? 'All Products' : category}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground">
             {category === 'All' 
-              ? 'Discover our complete collection of premium products' 
-              : `Explore our ${category.toLowerCase()} collection with cutting-edge technology`}
+              ? 'Browse our complete collection' 
+              : `Shop from our ${category.toLowerCase()} collection`}
           </p>
-          <div className="mt-4 text-sm text-muted-foreground">
+          <div className="mt-2 text-sm text-muted-foreground">
             Showing {displayedProducts.length} of {products.length} products
           </div>
         </div>
@@ -57,14 +55,14 @@ const ProductGrid = ({ category = 'All' }: ProductGridProps) => {
 
         {/* Load More Button */}
         {displayCount < products.length && (
-          <div className="text-center mt-12">
+          <div className="text-center mt-10">
             <Button 
               size="lg" 
-              variant="plasma"
-              className="px-8 py-4 text-lg"
+              variant="outline"
+              className="font-semibold"
               onClick={loadMore}
             >
-              Load More Products ({products.length - displayCount} remaining)
+              Load More ({products.length - displayCount} more)
             </Button>
           </div>
         )}
